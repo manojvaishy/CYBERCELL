@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apna Sarkaar Services | Cyber Cell</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a192f;
+            --secondary: #172a45;
+            --accent: #ff9f43;
+            --accent-light: #ffbe76;
+            --text: #ccd6f6;
+            --text-secondary: #8892b0;
+            --card-bg: rgba(23, 42, 69, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a192f, #0f2547, #172a45);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .cyber-header {
+            background: rgba(10, 25, 47, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--accent);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .cyber-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--accent), #ff6b6b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(255, 159, 67, 0.3);
+        }
+
+        .cyber-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent);
+            font-size: 1.2rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 159, 67, 0.1);
+            box-shadow: 0 0 10px rgba(255, 159, 67, 0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .page-title {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0.8rem auto;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 159, 67, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 159, 67, 0.3);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 159, 67, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+            text-shadow: 0 0 15px rgba(255, 159, 67, 0.4);
+        }
+
+        .service-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-light);
+            letter-spacing: 1px;
+        }
+
+        .service-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            min-height: 80px;
+        }
+
+        .service-btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: 1px solid var(--accent);
+            border-radius: 30px;
+            color: var(--accent-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .service-btn:hover {
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            color: var(--primary);
+            box-shadow: 0 0 15px rgba(255, 159, 67, 0.3);
+        }
+
+        .info-section {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 3rem;
+            border: 1px solid rgba(255, 159, 67, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .info-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .info-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .info-content p {
+            margin-bottom: 1.2rem;
+        }
+
+        .info-highlight {
+            color: var(--accent-light);
+            font-weight: 500;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .document-card {
+            background: rgba(10, 25, 47, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .document-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .document-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+        }
+
+        .document-card h3 i {
+            color: var(--accent);
+        }
+
+        .document-card ul {
+            padding-left: 1.5rem;
+        }
+
+        .document-card li {
+            margin-bottom: 0.6rem;
+            color: var(--text-secondary);
+        }
+
+        .certificate-info {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 159, 67, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .certificate-title {
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .certificate-item {
+            background: rgba(10, 25, 47, 0.4);
+            border-radius: 8px;
+            padding: 1.2rem;
+            border: 1px solid rgba(255, 159, 67, 0.1);
+        }
+
+        .certificate-item h4 {
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        footer {
+            background: rgba(10, 25, 47, 0.7);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 159, 67, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Animation for cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .document-card {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .document-card:nth-child(1) { animation-delay: 0.5s; }
+        .document-card:nth-child(2) { animation-delay: 0.6s; }
+        .document-card:nth-child(3) { animation-delay: 0.7s; }
+        .document-card:nth-child(4) { animation-delay: 0.8s; }
+        .document-card:nth-child(5) { animation-delay: 0.9s; }
+        .document-card:nth-child(6) { animation-delay: 1.0s; }
+
+        @media (max-width: 768px) {
+            .cyber-header h1 {
+                font-size: 2rem;
+                padding-top: 1.5rem;
+            }
+            
+            .back-btn {
+                position: relative;
+                left: 0;
+                top: 0;
+                transform: none;
+                display: inline-flex;
+                margin-bottom: 1rem;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Glowing effect */
+        .glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .glow span {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.2;
+        }
+
+        .glow span:nth-child(1) {
+            background: var(--accent);
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+        }
+
+        .glow span:nth-child(2) {
+            background: #ff6b6b;
+            width: 250px;
+            height: 250px;
+            bottom: 20%;
+            right: 15%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Glowing background elements -->
+    <div class="glow">
+        <span></span>
+        <span></span>
+    </div>
+
+    <header class="cyber-header">
+        <a href="file1.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Portal
+        </a>
+        <h1>CYBER CELL DOCUMENT PORTAL</h1>
+        <p>Apna Sarkaar Services - Government Certificate Application Portal</p>
+    </header>
+
+    <div class="container">
+        <h2 class="page-title">APNA SARKAAR SERVICES</h2>
+        
+        <div class="services-grid">
+            <div class="service-card" onclick="window.location.href='income-certificate.html'">
+                <div class="service-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <h3 class="service-title">Income Certificate</h3>
+                <p class="service-desc">Apply for income certificate to avail government schemes and benefits</p>
+                <a href="income-certificate.html" class="service-btn">APPLY NOW</a>
+            </div>
+            
+            <div class="service-card" onclick="window.location.href='domicile-certificate.html'">
+                <div class="service-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3 class="service-title">Domicile Certificate</h3>
+                <p class="service-desc">Proof of residence required for education and employment purposes</p>
+                <a href="domicile-certificate.html" class="service-btn">APPLY NOW</a>
+            </div>
+            
+            <div class="service-card" onclick="window.location.href='non-creamy-certificate.html'">
+                <div class="service-icon">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <h3 class="service-title">Non-Creamy Layer</h3>
+                <p class="service-desc">Certificate for OBC candidates to avail reservation benefits</p>
+                <a href="non-creamy-certificate.html" class="service-btn">APPLY NOW</a>
+            </div>
+            
+            <div class="service-card" onclick="window.location.href='ews-certificate.html'">
+                <div class="service-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <h3 class="service-title">EWS Certificate</h3>
+                <p class="service-desc">Economically Weaker Section certificate for reservation benefits</p>
+                <a href="ews-certificate.html" class="service-btn">APPLY NOW</a>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h3 class="info-title">DOCUMENTS REQUIRED</h3>
+            <p class="info-highlight">The following documents are required for government certificate applications:</p>
+            
+            <div class="documents-grid">
+                <div class="document-card">
+                    <h3><i class="fas fa-id-card"></i> Aadhar Card</h3>
+                    <ul>
+                        <li>Mandatory identity proof</li>
+                        <li>Original and photocopy required</li>
+                        <li>Must be linked with mobile number</li>
+                    </ul>
+                </div>
+                
+                <div class="document-card">
+                    <h3><i class="fas fa-address-card"></i> Ration Card</h3>
+                    <ul>
+                        <li>Proof of family composition</li>
+                        <li>Original required for verification</li>
+                        <li>Photocopy of front and back</li>
+                    </ul>
+                </div>
+                
+                <div class="document-card">
+                    <h3><i class="fas fa-bolt"></i> Power Bill</h3>
+                    <ul>
+                        <li>Proof of current residence</li>
+                        <li>Not older than 3 months</li>
+                        <li>Must show applicant's name and address</li>
+                    </ul>
+                </div>
+                
+                <div class="document-card">
+                    <h3><i class="fas fa-book"></i> Bank Passbook</h3>
+                    <ul>
+                        <li>First page with account details</li>
+                        <li>Updated passbook copy</li>
+                        <li>Shows account holder name and address</li>
+                    </ul>
+                </div>
+                
+                <div class="document-card">
+                    <h3><i class="fas fa-user"></i> Passport Size Photo</h3>
+                    <ul>
+                        <li>Recent color photograph</li>
+                        <li>White background</li>
+                        <li>35mm x 45mm size (2 copies)</li>
+                    </ul>
+                </div>
+                
+                <div class="document-card">
+                    <h3><i class="fas fa-certificate"></i> LC / Birth Certificate</h3>
+                    <ul>
+                        <li>Leaving Certificate or Birth Certificate</li>
+                        <li>Proof of age and identity</li>
+                        <li>Original required for verification</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="certificate-info">
+                <h3 class="certificate-title">CERTIFICATE INFORMATION</h3>
+                <div class="certificate-grid">
+                    <div class="certificate-item">
+                        <h4><i class="fas fa-info-circle"></i> Income Certificate</h4>
+                        <p>Issued to prove annual family income. Required for educational scholarships, fee waivers, and government schemes.</p>
+                    </div>
+                    
+                    <div class="certificate-item">
+                        <h4><i class="fas fa-info-circle"></i> Domicile Certificate</h4>
+                        <p>Proof of residence in a particular state. Required for government jobs, college admissions, and property transactions.</p>
+                    </div>
+                    
+                    <div class="certificate-item">
+                        <h4><i class="fas fa-info-circle"></i> Non-Creamy Layer</h4>
+                        <p>For OBC candidates whose family income is below ₹8 lakhs annually. Required for reservation benefits in jobs and education.</p>
+                    </div>
+                    
+                    <div class="certificate-item">
+                        <h4><i class="fas fa-info-circle"></i> EWS Certificate</h4>
+                        <p>For economically weaker sections (general category) with family income below ₹8 lakhs annually. Provides 10% reservation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 Cyber Cell Document Portal. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Help Center</a>
+        </div>
+    </footer>
+
+    <script>
+        // Add animation to service buttons on hover
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.querySelector('.service-icon').style.transform = 'scale(1.1)';
+                card.querySelector('.service-icon').style.textShadow = '0 0 15px rgba(255, 159, 67, 0.4)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.querySelector('.service-icon').style.transform = 'scale(1)';
+                card.querySelector('.service-icon').style.textShadow = 'none';
+            });
+        });
+        
+        // Simulate page loading animation
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.8s ease-in';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

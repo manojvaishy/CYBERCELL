@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAN Card Services | Pratham Enterprises</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a2c3c;
+            --secondary: #1a435e;
+            --accent: #2a9d8f;
+            --accent-light: #4cc9b3;
+            --text: #e8f1f2;
+            --text-secondary: #a8dadc;
+            --card-bg: rgba(26, 67, 94, 0.8);
+            --gold: #e9c46a;
+            --dark-blue: #0a192f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark-blue), var(--primary), var(--secondary));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .enterprise-header {
+            background: rgba(10, 44, 60, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--accent);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .enterprise-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(233, 196, 106, 0.4);
+        }
+
+        .enterprise-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .enterprise-header .tagline {
+            color: var(--accent-light);
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 1.2rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gold);
+            border-radius: 4px;
+        }
+
+        .back-btn:hover {
+            background: rgba(233, 196, 106, 0.1);
+            box-shadow: 0 0 10px rgba(233, 196, 106, 0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .page-title {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0.8rem auto;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(42, 157, 143, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: rgba(42, 157, 143, 0.4);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(42, 157, 143, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+            color: var(--gold);
+        }
+
+        .service-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-light);
+            letter-spacing: 1px;
+        }
+
+        .service-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            min-height: 80px;
+        }
+
+        .service-btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: 1px solid var(--accent);
+            border-radius: 30px;
+            color: var(--text);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .service-btn:hover {
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            color: var(--dark-blue);
+            box-shadow: 0 0 15px rgba(42, 157, 143, 0.3);
+        }
+
+        .info-section {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 3rem;
+            border: 1px solid rgba(42, 157, 143, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .info-title {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .info-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .info-content p {
+            margin-bottom: 1.2rem;
+        }
+
+        .info-highlight {
+            color: var(--accent-light);
+            font-weight: 500;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-item {
+            background: rgba(10, 44, 60, 0.3);
+            border-radius: 8px;
+            padding: 1.2rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .info-item h4 {
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: rgba(10, 44, 60, 0.85);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(42, 157, 143, 0.2);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .enterprise-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-right: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item i {
+            color: var(--accent);
+        }
+
+        /* Animation for cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @media (max-width: 768px) {
+            .enterprise-header h1 {
+                font-size: 2rem;
+                padding-top: 1.5rem;
+            }
+            
+            .back-btn {
+                position: relative;
+                left: 0;
+                top: 0;
+                transform: none;
+                display: inline-flex;
+                margin-bottom: 1rem;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+
+        /* Glowing effect */
+        .glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .glow span {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+        }
+
+        .glow span:nth-child(1) {
+            background: var(--accent);
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+        }
+
+        .glow span:nth-child(2) {
+            background: var(--gold);
+            width: 250px;
+            height: 250px;
+            bottom: 20%;
+            right: 15%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Glowing background elements -->
+    <div class="glow">
+        <span></span>
+        <span></span>
+    </div>
+
+    <header class="enterprise-header">
+        <a href="#" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="enterprise-logo">
+            <i class="fas fa-building logo-icon"></i>
+            <h1>PRATHAM ENTERPRISES</h1>
+        </div>
+        <p>PAN Card Services - Secure Management of Your Permanent Account Number</p>
+        <p class="tagline">Your Trusted Partner for Financial Documentation</p>
+    </header>
+
+    <div class="container">
+        <h2 class="page-title">PAN CARD SERVICES</h2>
+        
+        <div class="services-grid">
+            <div class="service-card" onclick="window.location.href='new-pan.html'">
+                <div class="service-icon">
+                    <i class="fas fa-id-card"></i>
+                </div>
+                <h3 class="service-title">New PAN Card</h3>
+                <p class="service-desc">Apply for a new Permanent Account Number (PAN) card. Required for financial transactions and tax filing</p>
+                <a href="new-pan.html" class="service-btn">APPLY NOW</a>
+            </div>
+            
+            <div class="service-card" onclick="window.location.href='renewal-pan.html'">
+                <div class="service-icon">
+                    <i class="fas fa-redo"></i>
+                </div>
+                <h3 class="service-title">Renewal PAN Card</h3>
+                <p class="service-desc">Renew your existing PAN card. Required for individuals, companies, and other entities</p>
+                <a href="renewal-pan.html" class="service-btn">RENEW NOW</a>
+            </div>
+            
+            <div class="service-card" onclick="window.location.href='update-pan.html'">
+                <div class="service-icon">
+                    <i class="fas fa-edit"></i>
+                </div>
+                <h3 class="service-title">Update PAN Card</h3>
+                <p class="service-desc">Update your personal details (name, address, photo) on your PAN card</p>
+                <a href="update-pan.html" class="service-btn">UPDATE DETAILS</a>
+            </div>
+            
+            <div class="service-card" onclick="window.location.href='know-pan.html'">
+                <div class="service-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3 class="service-title">Know Your PAN</h3>
+                <p class="service-desc">Retrieve your PAN number if you've forgotten it. Requires identity verification</p>
+                <a href="know-pan.html" class="service-btn">SEARCH PAN</a>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h3 class="info-title">PAN CARD INFORMATION</h3>
+            <div class="info-content">
+                <p>The Permanent Account Number (PAN) is a 10-digit alphanumeric identifier issued by the Income Tax Department of India. It is essential for various financial transactions and tax-related activities.</p>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h4>Who Needs PAN?</h4>
+                        <p>• All taxpayers</p>
+                        <p>• Business entities</p>
+                        <p>• Foreign nationals conducting business in India</p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <h4>Key Uses</h4>
+                        <p>• Filing income tax returns</p>
+                        <p>• Opening bank accounts</p>
+                        <p>• Property transactions</p>
+                        <p>• Securities investments</p>
+                    </div>
+                    
+                    <div class="info-item">
+                        <h4>Important Notes</h4>
+                        <p>• PAN is mandatory for transactions over ₹50,000</p>
+                        <p>• Only one PAN per individual is permitted</p>
+                        <p>• Providing false information is punishable</p>
+                    </div>
+                </div>
+                
+                <p><span class="info-highlight">Processing Time:</span> New PAN applications typically take 15-20 working days for processing. Updates and corrections may take 10-15 working days.</p>
+            </div>
+        </div>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <span>+91 98765 43210</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>info@prathamenterprises.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>123 Business Avenue, Mumbai</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 Pratham Enterprises. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Help Center</a>
+        </div>
+    </footer>
+
+    <script>
+        // Add animation to service buttons on hover
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.querySelector('.service-icon').style.transform = 'scale(1.1)';
+                card.querySelector('.service-icon').style.color = 'var(--gold)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.querySelector('.service-icon').style.transform = 'scale(1)';
+                card.querySelector('.service-icon').style.color = 'var(--accent)';
+            });
+        });
+        
+        // Simulate page loading animation
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.8s ease-in';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

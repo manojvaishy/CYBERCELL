@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport Services | Pratham Enterprises</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a3a5f;
+            --secondary: #2c5282;
+            --accent: #2b6cb0;
+            --accent-light: #4299e1;
+            --text: #2d3748;
+            --text-secondary: #4a5568;
+            --card-bg: #ffffff;
+            --background: #f7fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .enterprise-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 2rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            color: white;
+        }
+
+        .enterprise-header h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .enterprise-header p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .logo-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .logo {
+            font-size: 3rem;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .page-title {
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 0.8rem auto;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent-light);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+            color: var(--accent-light);
+        }
+
+        .service-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            letter-spacing: 0.5px;
+        }
+
+        .service-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            min-height: 80px;
+        }
+
+        .service-btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: linear-gradient(45deg, var(--accent), var(--accent-light));
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(66, 153, 225, 0.3);
+        }
+
+        .service-btn:hover {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            box-shadow: 0 6px 15px rgba(66, 153, 225, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .info-section {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 3rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .info-title {
+            font-family: 'Roboto', sans-serif;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .info-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .info-content p {
+            margin-bottom: 1.2rem;
+        }
+
+        .info-highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .document-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .document-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .document-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.2rem;
+        }
+
+        .document-card h3 i {
+            color: var(--accent);
+        }
+
+        .document-card ul {
+            padding-left: 1.5rem;
+        }
+
+        .document-card li {
+            margin-bottom: 0.6rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .process-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(66, 153, 225, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .process-title {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.3rem;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            counter-reset: step-counter;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            position: relative;
+            padding-left: 3rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        footer {
+            background: var(--primary);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item i {
+            color: var(--accent-light);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-light);
+        }
+
+        /* Animation for cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+
+        .document-card {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .document-card:nth-child(1) { animation-delay: 0.3s; }
+        .document-card:nth-child(2) { animation-delay: 0.4s; }
+        .document-card:nth-child(3) { animation-delay: 0.5s; }
+        .document-card:nth-child(4) { animation-delay: 0.6s; }
+        .document-card:nth-child(5) { animation-delay: 0.7s; }
+
+        @media (max-width: 768px) {
+            .enterprise-header h1 {
+                font-size: 2rem;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+
+        .benefits-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--accent);
+        }
+
+        .benefit-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="enterprise-header">
+        <div class="logo-container">
+            <div class="logo">
+                <i class="fas fa-passport"></i>
+            </div>
+        </div>
+        <h1>PRATHAM ENTERPRISES</h1>
+        <p>Passport Services - Professional and Efficient Passport Application Management</p>
+    </header>
+
+    <div class="container">
+        <h2 class="page-title">PASSPORT SERVICES</h2>
+        
+        <div class="services-grid">
+            <div class="service-card" onclick="window.location.href='new-passport.html'">
+                <div class="service-icon">
+                    <i class="fas fa-file-contract"></i>
+                </div>
+                <h3 class="service-title">New Passport</h3>
+                <p class="service-desc">Apply for a new passport with our streamlined process. First-time applicants can get their passport quickly and efficiently.</p>
+                <a href="new-passport.html" class="service-btn">APPLY NOW</a>
+            </div>
+            
+            <div class="service-card" onclick="window.location.href='renew-passport.html'">
+                <div class="service-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3 class="service-title">Renew Passport</h3>
+                <p class="service-desc">Renew your existing passport with our hassle-free service. Required when passport is expired or about to expire.</p>
+                <a href="renew-passport.html" class="service-btn">RENEW NOW</a>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h3 class="info-title">WHY CHOOSE PRATHAM ENTERPRISES?</h3>
+            
+            <div class="benefits-section">
+                <div class="benefit-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Fast Processing</h3>
+                    <p>Expedited services with minimal processing time</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Expert Assistance</h3>
+                    <p>Professional guidance at every step of the process</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Handling</h3>
+                    <p>Your documents are handled with utmost security</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-tag"></i>
+                    <h3>Competitive Pricing</h3>
+                    <p>Affordable services with transparent pricing</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h3 class="info-title">DOCUMENTS REQUIRED</h3>
+            <p class="info-highlight">The following documents are required for passport application:</p>
+            
+            <div class="documents-grid">
+                <div class="document-card">
+                    <h3><i class="fas fa-id-card"></i> Aadhar Card</h3>
+                    <ul>
+                        <li>Original Aadhar card required</li>
+                        <li>Clear photocopy (front and back)</li>
+                        <li>Must be linked with mobile number</li>
+                    </ul>
+                </div>
+                
+                <div class="document-card">
+                    <h3><i class="fas fa-credit-card"></i> PAN Card</h3>
+                    <ul>
+                        <li>Original PAN card required</li>
+                        <li>Clear photocopy</li>
+                        <li>Name must match with other documents</li>
+                    </ul>
+                </div>
+                
+                <div class="document-card">
+                    <h3><i class="fas fa-bolt"></i> Power Bill</h3>
+                    <ul>
+                        <li>Electricity bill of current residence</li>
+                        <li>Not older than 3 months</li>
+                        <li>Must show applicant's name and address</li>
+                    </ul>
+                </div>
+                
+                <div class="document-card">
+                    <h3><i class="fas fa-graduation-cap"></i> Leaving Certificate</h3>
+                    <ul>
+                        <li>Original school leaving certificate</li>
+                        <li>For minors and first-time applicants</li>
+                        <li>Must be attested if required</li>
+                    </ul>
+                </div>
+                
+                <div class="document-card">
+                    <h3><i class="fas fa-baby"></i> Birth Certificate</h3>
+                    <ul>
+                        <li>Original birth certificate</li>
+                        <li>Issued by municipal authority</li>
+                        <li>Required for minors and first-time applicants</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="process-section">
+                <h3 class="process-title">PASSPORT APPLICATION PROCESS</h3>
+                <div class="process-steps">
+                    <div class="step">Fill the online application form on our portal</div>
+                    <div class="step">Pay the applicable fees securely online</div>
+                    <div class="step">Schedule an appointment at our office</div>
+                    <div class="step">Visit with original documents for verification</div>
+                    <div class="step">Police verification will be conducted</div>
+                    <div class="step">Passport will be printed and dispatched</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 Pratham Enterprises. All rights reserved.</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>123 Business Avenue, Mumbai, India</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+91 98765 43210</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>info@prathenterprises.com</span>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Help Center</a>
+        </div>
+    </footer>
+
+    <script>
+        // Add animation to service buttons on hover
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.querySelector('.service-icon').style.transform = 'scale(1.1)';
+                card.querySelector('.service-icon').style.color = 'var(--accent-light)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.querySelector('.service-icon').style.transform = 'scale(1)';
+                card.querySelector('.service-icon').style.color = 'var(--accent)';
+            });
+        });
+        
+        // Simulate page loading animation
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.8s ease-in';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

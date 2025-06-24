@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratham Enterprises Document Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a0a0f;
+            --secondary: #2a121b;
+            --accent: #c19b76;
+            --accent-alt: #d4af37;
+            --text: #f5f1e6;
+            --text-secondary: #d9c6b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            font-family: 'Lora', serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                linear-gradient(rgba(26, 10, 15, 0.9), rgba(26, 10, 15, 0.9)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,30 Q50,10 70,30 T90,50 T70,70 T50,90 T30,70 T10,50 T30,30 Z" fill="none" stroke="%23c19b76" stroke-opacity="0.05" stroke-width="1"/></svg>');
+            background-size: cover;
+        }
+
+        .classic-header {
+            background: linear-gradient(to right, #1a0a0f, #2a121b);
+            padding: 2.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--accent);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .classic-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, transparent, var(--accent-alt), transparent);
+        }
+
+        .classic-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            color: var(--accent-alt);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+            font-weight: 600;
+        }
+
+        .classic-header p {
+            color: var(--text-secondary);
+            font-size: 1.3rem;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .document-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        .document-card {
+            background: rgba(42, 18, 27, 0.8);
+            border-radius: 6px;
+            padding: 1.8rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            flex: 0 0 calc(18% - 1.8rem);
+            min-width: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .document-card::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(193, 155, 118, 0.3);
+            border-radius: 4px;
+            pointer-events: none;
+        }
+
+        .document-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+            background: rgba(53, 24, 34, 0.9);
+            border-color: var(--accent-alt);
+        }
+
+        .document-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+            color: var(--accent-alt);
+            transition: transform 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .document-card:hover .document-icon {
+            transform: scale(1.15);
+            color: #e6c78f;
+        }
+
+        .document-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .document-card:hover .document-title {
+            color: var(--accent-alt);
+        }
+
+        .document-desc {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        footer {
+            background: var(--secondary);
+            text-align: center;
+            padding: 1.8rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid rgba(193, 155, 118, 0.2);
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent), transparent);
+        }
+
+        .filigree {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .filigree.tl {
+            top: 20px;
+            left: 20px;
+            border-top: 2px solid var(--accent);
+            border-left: 2px solid var(--accent);
+        }
+
+        .filigree.tr {
+            top: 20px;
+            right: 20px;
+            border-top: 2px solid var(--accent);
+            border-right: 2px solid var(--accent);
+        }
+
+        .filigree.bl {
+            bottom: 20px;
+            left: 20px;
+            border-bottom: 2px solid var(--accent);
+            border-left: 2px solid var(--accent);
+        }
+
+        .filigree.br {
+            bottom: 20px;
+            right: 20px;
+            border-bottom: 2px solid var(--accent);
+            border-right: 2px solid var(--accent);
+        }
+
+        .apale-sarkar .document-icon {
+            color: #d4af37;
+        }
+
+        .apale-sarkar .document-title {
+            color: #c19b76;
+        }
+
+        .apale-sarkar:hover {
+            border-color: #d4af37;
+        }
+
+        .apale-sarkar:hover .document-icon {
+            color: #e6c78f;
+        }
+
+        .apale-sarkar:hover .document-title {
+            color: #d4af37;
+        }
+
+        @media (max-width: 992px) {
+            .document-card {
+                flex: 0 0 calc(25% - 1.8rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .classic-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .document-row {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .document-card {
+                flex: 0 0 calc(33.333% - 1.8rem);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .document-card {
+                flex: 0 0 calc(50% - 1.8rem);
+            }
+            
+            .classic-header {
+                padding: 1.8rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="classic-header">
+        <div class="filigree tl"></div>
+        <div class="filigree tr"></div>
+        <h1>PRATHAM ENTERPRISES</h1>
+        <p>Document Management Portal</p>
+        <div class="filigree bl"></div>
+        <div class="filigree br"></div>
+    </header>
+
+    <div class="container">
+        <div class="document-row">
+            <div class="document-card" onclick="window.location.href='aadhar.html'">
+                <div class="document-icon">
+                    <i class="fas fa-id-card"></i>
+                </div>
+                <h2 class="document-title">Aadhar Card</h2>
+                <p class="document-desc">Verify or update your Aadhar details</p>
+            </div>
+
+            <div class="document-card" onclick="window.location.href='pancard.html'">
+                <div class="document-icon">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <h2 class="document-title">PAN Card</h2>
+                <p class="document-desc">Check or apply for PAN services</p>
+            </div>
+
+            <div class="document-card" onclick="window.location.href='passport.html'">
+                <div class="document-icon">
+                    <i class="fas fa-passport"></i>
+                </div>
+                <h2 class="document-title">Passport</h2>
+                <p class="document-desc">Passport verification and application</p>
+            </div>
+
+            <div class="document-card" onclick="window.location.href='license.html'">
+                <div class="document-icon">
+                    <i class="fas fa-id-card-alt"></i>
+                </div>
+                <h2 class="document-title">Driving License</h2>
+                <p class="document-desc">DL verification and services</p>
+            </div>
+
+            <div class="document-card apale-sarkar" onclick="window.location.href='sarkar.html'">
+                <div class="document-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <h2 class="document-title">Apale Sarkar</h2>
+                <p class="document-desc">Government schemes and benefits</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2023 Pratham Enterprises. All rights reserved.
+    </footer>
+
+    <script>
+        document.querySelectorAll('.document-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+            
+            card.addEventListener('click', () => {
+                // Visual feedback on click
+                card.style.boxShadow = '0 0 20px rgba(193, 155, 118, 0.7)';
+                setTimeout(() => {
+                    card.style.boxShadow = '0 12px 20px rgba(0, 0, 0, 0.3)';
+                }, 300);
+            });
+        });
+        
+        // Add subtle hover effect to header
+        const header = document.querySelector('.classic-header');
+        header.addEventListener('mouseenter', () => {
+            header.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.4)';
+        });
+        
+        header.addEventListener('mouseleave', () => {
+            header.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.3)';
+        });
+    </script>
+</body>
+</html>
